@@ -1,4 +1,4 @@
-export function Todo () {
+export function EditTodoFrom () {
     return (
     <div></div>
     )

@@ -1,12 +1,8 @@
-import TodoList from "./components/TodoList"
-
-
+import './App.css'
 
 function App() {
   return (
-    <div className="flex justify-center mx-auto max-w-xl bg-gray-200">
-        <TodoList/>
-    </div>
+   <h1>Hello React</h1>
   )
 }
 
