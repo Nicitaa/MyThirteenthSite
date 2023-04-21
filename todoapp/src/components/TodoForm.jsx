@@ -1,11 +1,13 @@
 import { useState } from "react"
 
-export function TodoFrom () {
+export function TodoFrom ({addTodo}) {
     const [value,setValue] = useState('')
 
     const handleSubmit = e => {
         e.preventDefault();
-        
+        addTodo(value)
+
+        setValue('')
     }
     
     return (
