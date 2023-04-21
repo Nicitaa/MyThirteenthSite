@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export function Todo ({task,toggleComplete}) {
     return (
     <div className="Todo">
-        <p onClick={() => toggleComplete(task.id)} className={`${task.completed ? 'completed' : ''}`}>
+        <p onClick={() => toggleComplete(task.id)} className={`${task.completed} ? 'completed' :''`} onClick={() => toggleComplete(task.id)} className={`${task.completed ? 'completed' : ''}`}>
              {task.task}</p>
         <div>
             <FontAwesomeIcon icon={faPenToSquare}/>
