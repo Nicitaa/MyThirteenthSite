@@ -7,16 +7,16 @@ uuidv4()
 export function TodoWrapper () {
     const [todos,setTodos] = useState([])
 
-    const addTodo = todo => {
-        setTodos([...todos,{id:uuidv4(),task:todo,completed:false,isEditing:false}])
-        console.log(todos)
+    const addTodo = title => {
+        setTodos([{id:uuidv4(),title,completed:false,isEditing:false}])
+        console.log([{id:uuidv4(),title,completed:false,isEditing:false}])
     }
 return (
 <div className="TodoWrapper">
     <h1>Get things done!</h1>
     <TodoFrom addTodo={addTodo}/>
-    {todos.map((todo,index) => (
-        <Todo task={todo} key={index}/>
+    {todos.map((title,index) => (
+        <Todo todo={title} key={index}/>
     ))}
 </div>
 )
