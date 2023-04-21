@@ -12,9 +12,10 @@ function App() {
   return (
     <>
     <h1>Unsere todos</h1>
-    <Todo/>
-    <Todo/>
-    <Todo/>
+    {todos.map((todo,index) => {
+      return (<Todo key={index} desc={todo.description} done={todo.done}/>)
+    })}
+    
     </>
   )
 }

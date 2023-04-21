@@ -1,6 +1,8 @@
-const Todo = () => {
+const Todo = (props) => {
     return (
-        <div>Todo</div>
+        <div>
+            <h1>{props.desc}</h1>
+        </div>
     )
 }
 
