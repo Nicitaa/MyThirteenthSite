@@ -1,40 +1,37 @@
-import { TodoFrom } from "./TodoForm";
-import {v4 as uuidv4} from 'uuid'
 import { useState } from "react";
+import { TodoFrom } from "./TodoForm";
 import { Todo } from "./Todo";
-import {EditTodoFrom} from './EditTodoForm'
+import {v4 as uuidv4} from 'uuid'
+import { EditTodoFrom } from "./EditTodoForm";
 uuidv4()
 
 export function TodoWrapper () {
     const [todos,setTodos] = useState([])
 
-    const addTodo = todo => {
-        setTodos([...todos,{id:uuidv4(),task:todo,completed:false,isEditing:false}])
-        console.log(todos)
+    function addTodo(title) {
+        setTodos(todo => [...todo,{id:uuidv4(),title,completed:false,isEditing:false}])
+        console.log(todo => [...todo,{id:uuidv4(),title,completed:false,isEditing:false}])
     }
-    const toggleComplete = id => {
-        setTodos(todos.map(todo=>todo.id ===id ? {...todo,completed:!todo.completed} : todo))
+    function toggleComplete(id) {
+        setTodos(todos.map(todo => todo.id ===id ? {...todo,completed:!todo.completed} : todo))
     }
-    const deleteTodo = id => {
+    function deleteTodo(id) {
         setTodos(todos.filter(todo => todo.id !==id))
     }
-    const editTodo = id => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo,isEditing:!todo.isEditing}:todo))
+    function showEdit(id) {
+        setTodos(todos.map(todo => todo.id ===id ? {...todo,isEditing:!todo.isEditing}:todo))
     }
-    const editTask = (task,id) => {
-        setTodos(todos.map(todo => todo.id ===id ? {
-            ...todo,task,isEditing:!todo.isEditing} :todo))
-        }
+    function editTodo(title,id) {
+        setTodos(todos.map(todo => todo.id ===id ? {...todo,title,isEditing:!todo.isEditing}:todo))
+    }
 return (
 <div className="TodoWrapper">
-    <h1>Get things done!</h1>
     <TodoFrom addTodo={addTodo}/>
-    {todos.map((todo,index) => (
-        todo.isEditing ? <EditTodoFrom key={index} editTodo={editTask} task={todo}/> :
-        <Todo task={todo} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo}
-        editTodo={editTodo}/>
-        
-    ))}
+    {todos.map((title,index) => {
+        return title.isEditing ? <EditTodoFrom editTodo={editTodo} todo={title} key={index}/> :
+         <Todo todo={title} key={index} toggleComplete={toggleComplete} deleteTodo={deleteTodo}
+        showEdit={showEdit}/>
+    })}
 </div>
 )
 }
